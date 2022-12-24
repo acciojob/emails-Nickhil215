@@ -2,30 +2,6 @@ package com.driver;
 
 import java.util.*;
 
-class info{
-    Date data;
-    String sender;
-    String message;
-
-    public info(Date data, String sender, String message) {
-        this.data = data;
-        this.sender = sender;
-        this.message = message;
-    }
-
-    public Date getData() {
-        return data;
-    }
-
-    public String getSender() {
-        return sender;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-}
-
 public class Gmail extends Email {
 
     int inboxCapacity;
@@ -35,16 +11,16 @@ public class Gmail extends Email {
     //Trash: Stores mails. Each mail has date (Date), sender (String), message (String)
 
 //    for inbox  use ArrayList data structure
-   ArrayList<info> Inbox;
+   ArrayList<info> Inbox=new ArrayList<>();
+
 //    for trush use ArrayList
-    ArrayList<info> Trush;
+    ArrayList<info>  Trush=new ArrayList<>();
 
 
     public Gmail(String emailId, int inboxCapacity) {
         super(emailId);
         this.inboxCapacity=inboxCapacity;
-        Inbox=new ArrayList<>();
-        Trush=new ArrayList<>();
+
     }
 
 //    public Gmail(String emailId) {
@@ -57,11 +33,11 @@ public class Gmail extends Email {
         // It is guaranteed that:
         // 1. Each mail in the inbox is distinct.
         // 2. The mails are received in non-decreasing order. This means that the date of a new mail is greater than equal to the dates of mails received already.
-    if(Inbox.size()==inboxCapacity){
+    if(Inbox.size()==getInboxCapacity()){
         Trush.add(Inbox.remove(Inbox.size()-1));
 
     }else{
-        Inbox.add(new info(date,sender,message));
+        Inbox.add(0,new info(date,sender,message));
     }
     }
 

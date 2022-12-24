@@ -14,10 +14,12 @@ public class Email {
     }
 
     public String getEmailId() {
+
         return emailId;
     }
 
     public String getPassword() {
+
         return password;
     }
 
@@ -28,9 +30,11 @@ public class Email {
         // 3. It contains at least one lowercase letter
         // 4. It contains at least one digit
         // 5. It contains at least one special character. Any character apart from alphabets and digits is a special character
-
         if(password.equals(oldPassword)){
-           boolean haveLower=false,haveUpper=false,haveDigit=false,havespl=false;
+            boolean haveLower=false;
+            boolean haveUpper=false;
+            boolean haveDigit=false;
+            boolean havespl=false;
            HashSet<Character>set=new HashSet<>(Arrays.asList('!', '@', '#', '$', '%', '^', '&','*', '(', ')', '-', '+'));
         for(char i: newPassword.toCharArray()){
             if(Character.isLowerCase(i)){

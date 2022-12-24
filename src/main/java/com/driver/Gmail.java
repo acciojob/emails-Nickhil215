@@ -1,9 +1,6 @@
 package com.driver;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 class info{
     Date data;
@@ -58,7 +55,7 @@ public class Gmail extends Email {
         // It is guaranteed that:
         // 1. Each mail in the inbox is distinct.
         // 2. The mails are received in non-decreasing order. This means that the date of a new mail is greater than equal to the dates of mails received already.
-    if(inbox.size()<inboxCapacity){
+    if(inbox.size()<=inboxCapacity){
         inbox.add(new info(date,sender,message));
     }else{
         trush.add(inbox.remove(0));
@@ -95,10 +92,16 @@ public class Gmail extends Email {
         //find number of mails in the inbox which are received between given dates
         //It is guaranteed that start date <= end date
         int count=0;
-        int starting =inbox.indexOf(start);
-        int ending=inbox.indexOf(end);
 
-        return ending-starting;
+        Iterator<info> list=inbox.listIterator();
+       while(list.hasNext()){
+           info between=list.next();
+           if(between.data.getTime()>=start.getTime() && between.data.getTime()<=end.getTime()){
+               count++;
+           }
+
+       }
+      return count;
     }
 
     public int getInboxSize(){

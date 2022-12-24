@@ -23,9 +23,9 @@ public class Gmail extends Email {
 
     }
 
-//    public Gmail(String emailId) {
-//        super(emailId);
-//    }
+    public Gmail(String emailId) {
+        super(emailId);
+    }
 
 
     public void receiveMail(Date date, String sender, String message){

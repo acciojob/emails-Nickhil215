@@ -9,8 +9,8 @@ import java.util.Comparator;
 public class Workspace extends Gmail{
     private ArrayList<Meeting> calendar; // Stores all the meetings
     public Workspace(String emailId) {
-        super(emailId,Integer.MAX_VALUE);
-        //inboxCapacity=Integer.MAX_VALUE;
+        super(emailId);
+        inboxCapacity=Integer.MAX_VALUE;
         calendar=new ArrayList<>();
     }
     public void addMeeting(Meeting meeting){

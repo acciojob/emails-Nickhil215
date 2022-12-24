@@ -35,14 +35,16 @@ public class Gmail extends Email {
     //Trash: Stores mails. Each mail has date (Date), sender (String), message (String)
 
 //    for inbox  use ArrayList data structure
-   ArrayList<info> inbox=new ArrayList<>();
+   ArrayList<info> inbox;
 //    for trush use ArrayList
-    ArrayList<info> trush=new ArrayList<>();
+    ArrayList<info> trush;
 
 
     public Gmail(String emailId, int inboxCapacity) {
         super(emailId);
         this.inboxCapacity=inboxCapacity;
+        inbox=new ArrayList<>();
+        trush=new ArrayList<>();
     }
 
 //    public Gmail(String emailId) {
@@ -71,6 +73,7 @@ public class Gmail extends Email {
            if(dlt.message.equals(message)){
                trush.add(dlt);
                list.remove();
+               break;
            }
        }
     }

@@ -7,15 +7,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 public class Workspace extends Gmail{
-
     private ArrayList<Meeting> calendar; // Stores all the meetings
-
     public Workspace(String emailId) {
         super(emailId,Integer.MAX_VALUE);
         //inboxCapacity=Integer.MAX_VALUE;
         calendar=new ArrayList<>();
     }
-
     public void addMeeting(Meeting meeting){
         //add the meeting to calendar
         calendar.add(meeting);

@@ -33,31 +33,24 @@ public class Gmail extends Email {
         // It is guaranteed that:
         // 1. Each mail in the inbox is distinct.
         // 2. The mails are received in non-decreasing order. This means that the date of a new mail is greater than equal to the dates of mails received already.
-    if(Inbox.size()==getInboxCapacity()){
-        Trush.add(Inbox.remove(Inbox.size()-1));
-
-    }else{
-        Inbox.add(0,new info(date,sender,message));
-    }
+      if(Inbox.size()<inboxCapacity){
+          Inbox.add(new info(date,sender,message));
+      }else{
+          Trush.add(new info(date,sender,message));
+      }
     }
 
     public void deleteMail(String message){
         // Each message is distinct
         // If the given message is found in any mail in the inbox, move the mail to trash, else do nothing
-//       Iterator<info> list=inbox.listIterator();
-//       while (list.hasNext()){
-//           info dlt=list.next();
-//           if(dlt.message.equals(message)){
-//               trush.add(dlt);
-//               list.remove();
-//               break;
-//           }
-//       }
+
         for(int i=0;i<Inbox.size();i++ ){
             info obj=Inbox.get(i);
             if(obj.message.equals(message)){
                 Trush.add(new info(obj.data,obj.sender,obj.message));
+
                 Inbox.remove(obj);
+
             }
         }
     }
@@ -83,20 +76,25 @@ public class Gmail extends Email {
         //It is guaranteed that start date <= end date
         int count=0;
 
-        Iterator<info> list=Inbox.listIterator();
-       while(list.hasNext()){
-           info between=list.next();
-           if(between.data.getTime()>=start.getTime() && between.data.getTime()<=end.getTime()){
-               count++;
-           }
-
-       }
+//        Iterator<info> list=Inbox.listIterator();
+//       while(list.hasNext()){
+//           info between=list.next();
+//           if(between.data.getTime()>=start.getTime() && between.data.getTime()<=end.getTime()){
+//               count++;
+//           }
+//       }
+        for(int i=0;i<Inbox.size()-1;i++){
+            info obj=Inbox.get(i);
+            if(obj.data.compareTo(start)>=0 && obj.data.compareTo(end)<=0){
+                count++;
+            }
+        }
       return count;
     }
 
     public int getInboxSize(){
         // Return number of mails in inbox
-return  Inbox.size();
+        return  Inbox.size();
     }
 
     public int getTrashSize(){

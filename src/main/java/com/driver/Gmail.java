@@ -64,14 +64,22 @@ public class Gmail extends Email {
     public void deleteMail(String message){
         // Each message is distinct
         // If the given message is found in any mail in the inbox, move the mail to trash, else do nothing
-
-        for(int i=0;i<Inbox.size();i++ ){
-            info obj=Inbox.get(i);
-            if(obj.message.equals(message)){
-                Trush.add(new info(obj.data,obj.sender,obj.message));
-                Inbox.remove(obj);
+        Iterator<info> list = Inbox.listIterator();
+        while (list.hasNext()){
+            info dlt=list.next();
+            if(dlt.message.equals(message)){
+                Trush.add(dlt);
+                list.remove();
             }
         }
+
+//        for(int i=0;i<Inbox.size();i++ ){
+//            info obj=Inbox.get(i);
+//            if(obj.message.equals(message)){
+//                Trush.add(new info(obj.data,obj.sender,obj.message));
+//                Inbox.remove(obj);
+//            }
+//        }
     }
 
     public String findLatestMessage(){

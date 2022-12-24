@@ -36,7 +36,7 @@ public class Main {
         System.out.println("Maximum meetings you can attend in a day is " + workspace.findMaxMeetings());
     }
 }
-/**
+/*
 Total 3 mails in inbox.
 There are 2 mails between given dates!
 The latest message is :Assignment to be uploaded on database.

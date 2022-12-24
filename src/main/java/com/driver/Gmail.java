@@ -74,19 +74,19 @@ public class Gmail extends Email {
         //It is guaranteed that start date <= end date
         int count=0;
 
-//        Iterator<info> list=Inbox.listIterator();
-//       while(list.hasNext()){
-//           info between=list.next();
-//           if(between.data.getTime()>=start.getTime() && between.data.getTime()<=end.getTime()){
-//               count++;
-//           }
-//       }
-        for(int i=0;i<Inbox.size()-1;i++){
-            info obj=Inbox.get(i);
-            if(obj.data.compareTo(start)>=0 && obj.data.compareTo(end)<=0){
-                count++;
-            }
-        }
+        Iterator<info> list=Inbox.listIterator();
+       while(list.hasNext()){
+           info between=list.next();
+           if(between.data.getTime()>=start.getTime() && between.data.getTime()<=end.getTime()){
+               count++;
+           }
+       }
+//        for(int i=0;i<Inbox.size()-1;i++){
+//            info obj=Inbox.get(i);
+//            if(obj.data.compareTo(start)>=0 && obj.data.compareTo(end)<=0){
+//                count++;
+//            }
+//        }
       return count;
     }
 

@@ -55,6 +55,7 @@ public class Gmail extends Email {
 
     public String findLatestMessage(){
         // If the inbox is empty, return null
+      if(Inbox.size()==0) return null;
         // Else, return the message of the latest mail present in the inbox
        info letest=Inbox.get(Inbox.size()-1);
        String let=letest.message;
@@ -63,6 +64,7 @@ public class Gmail extends Email {
 
     public String findOldestMessage(){
         // If the inbox is empty, return null
+        if(Inbox.size()==0) return null;
         // Else, return the message of the oldest mail present in the inbox
         info oldest=Inbox.get(0);
         String old=oldest.message;
@@ -108,6 +110,6 @@ public class Gmail extends Email {
 
     public int getInboxCapacity() {
         // Return the maximum number of mails that can be stored in the inbox
-        return inboxCapacity;
+        return this.inboxCapacity;
     }
 }

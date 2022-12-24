@@ -1,5 +1,8 @@
 package com.driver;
 
+import java.util.Arrays;
+import java.util.HashSet;
+
 public class Email {
 
     private String emailId;
@@ -25,5 +28,28 @@ public class Email {
         // 3. It contains at least one lowercase letter
         // 4. It contains at least one digit
         // 5. It contains at least one special character. Any character apart from alphabets and digits is a special character
+
+        if(password.equals(oldPassword)){
+           boolean haveLower=false,haveUpper=false,haveDigit=false,havespl=false;
+           HashSet<Character>set=new HashSet<>(Arrays.asList('!', '@', '#', '$', '%', '^', '&','*', '(', ')', '-', '+'));
+        for(char i: newPassword.toCharArray()){
+            if(Character.isLowerCase(i)){
+                haveLower=true;
+            }
+            if(Character.isUpperCase(i)){
+                haveUpper=true;
+            }
+            if(Character.isDigit(i)){
+                haveDigit=true;
+            }
+            if(set.contains(i)){
+                havespl=true;
+            }
+        }
+        if((havespl == true && haveDigit == true && haveLower == true && haveUpper ==true) && newPassword.length()>=8){
+            password=newPassword;
+        }
+
+        }
     }
 }

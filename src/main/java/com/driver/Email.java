@@ -35,18 +35,18 @@ public class Email {
             boolean haveUpper=false;
             boolean haveDigit=false;
             boolean havespl=false;
-           HashSet<Character>set=new HashSet<>(Arrays.asList('!', '@', '#', '$', '%', '^', '&','*', '(', ')', '-', '+'));
+//           HashSet<Character>set=new HashSet<>(Arrays.asList('!', '@', '#', '$', '%', '^', '&','*', '(', ')', '-', '+'));
         for(char i: newPassword.toCharArray()){
             if(Character.isLowerCase(i)){
                 haveLower=true;
             }
-            if(Character.isUpperCase(i)){
+            else if(Character.isUpperCase(i)){
                 haveUpper=true;
             }
-            if(Character.isDigit(i)){
+            else if(Character.isDigit(i)){
                 haveDigit=true;
             }
-            if(set.contains(i)){
+            else {
                 havespl=true;
             }
         }
